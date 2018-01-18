@@ -42,13 +42,14 @@
 		$title = "'".$_POST["title"]."'";
 		$search = "'".$_POST["search"]."'";
 		$lastEpisode = "'".$_POST["lastepisode"]."'";
+		$today = date("d/m/Y H:i:s");
 
 		$active = 0;
 		if (isset($_POST["active"])) {
 			$active = 1;
 		}
 
-		$query = "insert into serie (name, search, lastEpisode, active) values(".$title.", ".$search.", ".$lastEpisode.", ".$active.");";
+		$query = "insert into serie (name, search, lastEpisode, active, updated) values(".$title.", ".$search.", ".$lastEpisode.", ".$active.", '".$today."');";
 
 		$db = new SQLite3(get_db_path());
 		$db->exec($query);
@@ -71,7 +72,8 @@
 			$active = 1;
 		}
 
-		$query = "update serie set name = ".$title.", search = ".$search.", lastEpisode = " .$lastEpisode.", active = ".$active." where id = ".$id;
+		$today = date("d/m/Y H:i:s");
+		$query = "update serie set name = ".$title.", search = ".$search.", lastEpisode = " .$lastEpisode.", active = ".$active.", updated = ".$today." where id = ".$id;
 
 		$db = new SQLite3(get_db_path());
 		$db->exec($query);

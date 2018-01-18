@@ -31,6 +31,7 @@
 										<th>Name</th>
 										<th>Last Episode</th>
 										<th>Active</th>
+										<th>Last Updated</th>
 										<th>Actions</th>
 									</tr>
 								</thead>
@@ -54,6 +55,8 @@
 												} else {
 													echo "<td>No</td>";
 												}
+
+												echo "<td>". $s['updated'] ."</td>";
 
 												echo "<td>";
 													echo "<a href=\"editserie.php?id=".$s['id']."\">Edit</a>";
