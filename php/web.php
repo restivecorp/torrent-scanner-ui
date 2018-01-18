@@ -73,7 +73,7 @@
 		}
 
 		$today = date("d/m/Y H:i:s");
-		$query = "update serie set name = ".$title.", search = ".$search.", lastEpisode = " .$lastEpisode.", active = ".$active.", updated = ".$today." where id = ".$id;
+		$query = "update serie set name = ".$title.", search = ".$search.", lastEpisode = " .$lastEpisode.", active = ".$active.", updated = '".$today."' where id = ".$id;
 
 		$db = new SQLite3(get_db_path());
 		$db->exec($query);
